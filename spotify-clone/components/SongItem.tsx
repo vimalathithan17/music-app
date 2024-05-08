@@ -1,8 +1,13 @@
 "use client";
+
 import PlayButton from "./PlayButton";
+
 import useLoadImage from "@/hooks/useLoadImage";
+
 import { Song } from "@/types";
+
 import Image from "next/image";
+
 
 interface SongItemProps{
     data:Song;
@@ -15,7 +20,7 @@ const SongItem:React.FC<SongItemProps>=({
 })=>{
     const imagePath=useLoadImage(data);
     return(
-        <div
+    <div
         onClick={()=>onClick(data.id)}
         className="
         relative
@@ -33,28 +38,28 @@ const SongItem:React.FC<SongItemProps>=({
         transition
         p-3
         "
-        >
-    <div 
-       className="
-       relative
-       aspect-square
-       w-full
-       h-full
-       rounded-md
-       overflow-hidden
-       " 
     >
-        <Image
-        className="object-cover"
-        src={imagePath||'/images/liked.png'}
-        fill
-        alt="Image"
-        />
-</div>
-        <div className="flex flex-col items-start w-full p-4 gap-y-1">
+        <div 
+        className="
+        relative
+        aspect-square
+        w-full
+        h-full
+        rounded-md
+        overflow-hidden
+        " 
+        >
+            <Image
+            className="object-cover"
+            src={imagePath||'/images/liked.png'}
+            fill
+           alt="Image"
+            />
+        </div>
+        <div className="flex flex-col items-start w-full pt-4 gap-y-1">
             <p className="font-semibold truncate w-full">
                 {data.title}
-                </p>
+            </p>
             <p className="
             text-neutral-400
             text-sm
@@ -63,16 +68,16 @@ const SongItem:React.FC<SongItemProps>=({
             truncate">
                 By {data.author}
             </p>
-            </div>
-            <div className="
+        </div>
+        <div className="
             absolute
             bottom-24
-            right-5">
+            right-5"
+        >
                 <PlayButton/>
-                </div>  
+        </div>  
 
-            
-            </div>
+    </div>
     );
 }
 

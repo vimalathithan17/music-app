@@ -1,4 +1,5 @@
 "use client";
+
 import useLoadImage from "@/hooks/useLoadImage";
 import { Song } from "@/types";
 import Image from "next/image"; // Corrected import
@@ -8,12 +9,15 @@ interface MediaItemProps {
   onClick?: (id: string) => void;
 }
 
-const MediaItem: React.FC<MediaItemProps> = ({ data, onClick }) => {
+const MediaItem: React.FC<MediaItemProps> = ({ 
+  data, 
+  onClick 
+}) => {
   const imageUrl = useLoadImage(data);
 
   const handleClick = () => {
     if (onClick) {
-      onClick(data.id);
+      return onClick(data.id);
     }
   };
 
@@ -43,9 +47,20 @@ const MediaItem: React.FC<MediaItemProps> = ({ data, onClick }) => {
           src={imageUrl || '/images/liked.png'}
           alt="Media Item"
           className="object-cover"
-          width={48}
-          height={48}
         />
+      </div>
+      <div className="
+        flex 
+        flex-col
+        gap-y-1
+        overflow-hidden
+      ">
+        <p className="text-white truncate">
+          {data.title}
+        </p>
+        <p className="text-neutral-400 text-sm truncae">
+          {data.author}
+        </p>
       </div>
     </div>
   );
