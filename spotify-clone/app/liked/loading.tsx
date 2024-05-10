@@ -10,3 +10,5 @@ const Loading = () => {
         </Box>
     )
 }
+
+export default Loading;
